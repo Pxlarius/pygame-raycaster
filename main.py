@@ -47,11 +47,16 @@ while running:
         if event.type == pygame.QUIT:
             exit()
     # loop that applies to all values within the players fov
-    for i in range(fov):
-        print('i')
-        # define player position and rotation
-
+    for i in range(fov+1):
+        # newRotation = old rotation + change
+        # i - fov/2 = fov angle
+        newRot = rot + m.radians(i - fov/2)
+        # define player position
+        vertAx, vertAy = xPos, yPos
+        # define contact between ray and object
+        vertBx, vertBy = vertAx + m.radians(i - fov/2), vertAy + m.radians(i - fov/2)
         # calculates side length of fov via trig
+        # lineC = (lineA)*(lineA)+(lineB)*(lineB) - 2(lineA*lineB)*m.cos(fov/2)
         # loop that updates fov constantly
         # renders environment if 1 is detected in matrix
     # draws environment with pygame.draw.line
